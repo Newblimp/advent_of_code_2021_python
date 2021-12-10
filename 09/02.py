@@ -8,6 +8,7 @@ def find_basins(field1):
             if field[i][j] != 9:
                 for outer in basins:
                     if (i,j) not in outer:
+                        member_of_basin = true
                         if (i-1,j) in outer:
                             outer.append((i,j))
                         elif (i+1,j) in outer:
@@ -16,6 +17,8 @@ def find_basins(field1):
                             outer.append((i,j))
                         elif (i,j+1) in outer:
                             outer.append((i,j))
+                        else:
+                            member_of_basin = false
     return basins
 
             
