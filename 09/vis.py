@@ -64,13 +64,16 @@ with open("09/input.txt", "r") as file:
         y += 1
         x = 0
 
-to_clean = find_basins(field)
-list_of_basins = clean_up_basins(to_clean)
+print(field)
 
-list_of_basins.sort(key=len, reverse=True)
+import seaborn as sns; sns.set()
+import matplotlib.pyplot as plt
 
-answer = 1
+plt.figure(figsize=(10,10))
+ax = sns.heatmap(field, cmap="YlGnBu_r", xticklabels=False, yticklabels=False)
 
-for mult in range(3):
-    answer = answer * len(list_of_basins[mult])
-print(answer)
+# plt.title("How to visualize (plot) \n a numpy array in python using seaborn ?",fontsize=12)
+
+# plt.savefig("visualize_numpy_array_01.png", bbox_inches='tight', dpi=100)
+
+plt.show()
