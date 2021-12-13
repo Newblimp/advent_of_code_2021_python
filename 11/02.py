@@ -39,7 +39,10 @@ with open("11/input.txt", "r") as file:
 
 # loop 100 times
 counter = 0
-for _ in range(100):
+first_sync = 0
+i = 0
+while first_sync == 0:
+    i += 1
     # implement description of one step here
     # First, the energy level of each octopus increases by 1.
     octopi = octopi + 1
@@ -48,5 +51,10 @@ for _ in range(100):
     # print(octopi)
     while (np.any(octopi > 9)):
         counter = flash(octopi, grid_size, counter)
+    if np.all(octopi == octopi[0][0]):
+        first_sync = i 
+        break
 
-print(counter)
+    
+
+print(first_sync)
