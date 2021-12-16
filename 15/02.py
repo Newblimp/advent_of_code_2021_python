@@ -25,8 +25,6 @@ with open("15/input.txt", "r") as file:
 # initialize some variables to implement Dijkstra
 size_x = len(small_field[0].strip())
 size_y = len(small_field)
-unvisited = []
-nodes = {}
 start = (0, 0)
 
 # expand field according to AoC
@@ -34,11 +32,13 @@ field = expand_field(small_field, size_y)
 size_x = size_x*5
 size_y = size_y*5
 
-for i in range(size_x):
-    for j in range(size_y):
-        unvisited.append((i, j))
-        # create dictionary with distance
-        nodes[(i, j)] = math.inf
+
+nodes = {(i,j): math.inf for i in range(size_x) for j in range(size_y)}
+# for i in range(size_x):
+#     for j in range(size_y):
+#         # unvisited.append((i, j))
+#         # create dictionary with distance
+#         nodes[(i, j)] = math.inf
 nodes[start] = 0
 to_visit = [start]
 
