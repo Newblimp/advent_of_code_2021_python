@@ -16,7 +16,6 @@ def expand_field(lst_input, x):
     return new_lst
 
 
-
 #import field
 with open("15/input.txt", "r") as file:
     small_field = file.readlines()
@@ -33,19 +32,15 @@ size_x = size_x*5
 size_y = size_y*5
 
 
-nodes = {(i,j): math.inf for i in range(size_x) for j in range(size_y)}
-# for i in range(size_x):
-#     for j in range(size_y):
-#         # unvisited.append((i, j))
-#         # create dictionary with distance
-#         nodes[(i, j)] = math.inf
+nodes = {(i, j): math.inf for i in range(size_x) for j in range(size_y)}
 nodes[start] = 0
 to_visit = [start]
 
 # calculate distance to all other nodes, append to dictionary
 while len(to_visit) > 0:
 
-    i,j = to_visit[0] # about twice as fast as actually looking for the minimum
+    # about twice as fast as actually looking for the minimum
+    i, j = to_visit[0]
 
     # looks through dict and takes node with min weight
     # i, j = min(to_visit, key = lambda k: nodes[k])
@@ -70,6 +65,6 @@ while len(to_visit) > 0:
             nodes[(i, j+1)] = nodes[(i, j)] + int(field[i][j+1])
             to_visit.append((i, j+1))
 
-    to_visit.remove((i,j))
+    to_visit.remove((i, j))
 
-print(nodes[(size_x-1,size_y-1)])
+print(nodes[(size_x-1, size_y-1)])
